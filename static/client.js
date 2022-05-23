@@ -51,7 +51,14 @@ const parseMsg = (msg) => {
 
 	var message = document.createElement('span');
 	message.id = "message"
-	message.innerHTML = msg.msg.replaceAll('\n', '<br/>');
+	
+	let a = JSON.stringify(msg.msg)
+	a = a.slice(1,-1)
+	a = a.replace(/\\n/g, '<br />');
+	a = a.replace(/\\t/g, '&emsp;');
+
+	message.innerHTML = a
+
 	item.appendChild(message);
 
 	messages.appendChild(item);
@@ -80,3 +87,8 @@ Array.from( document.querySelectorAll('[data-expand]'), (input)=>{
   input.addEventListener('input', updateSize);
   updateSize();
 });
+
+console.log(input);
+input.addEventListener('input', (e) => {
+	input.rows = input.value.split('\n').length;
+})

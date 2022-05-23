@@ -63,8 +63,7 @@ app.get('/', (req, res) => {
 app.use(express.static('static'))
 
 server.listen(80, () => {
-	console.log('listening on *:3000');
-	console.log("Listening on: " + getLocalExternalIP() + ":80");
+	console.log("Listening on: http://" + getLocalExternalIP());
 });
 
 
